@@ -91,8 +91,26 @@ public class Pedido {
 	 * Agrega productos al historial.
 	 * @param Productos
 	 */
-	public void agregarproducto(Producto Productos) {
-		Producto.add(producto);
+	public  void agregarproducto(Producto Productos) {
+		producto.add(Productos);
+		
+	}
+	/*
+	 * Para guardar el producto en la lista
+	 */
+	@Override
+	public String toString() {
+	
+	String lista="";	
+		
+	for (Producto p:producto) {
+			lista = lista+p;
+	}
+	return GetCliente()+lista +"\n"+"CANT  " + "PRODUCTO   " +   "PRECIO  " +  "UD TOTAL"+ "\n"+
+								"====   "     + "=========" ;
+	
+		
+
 		
 	}
 

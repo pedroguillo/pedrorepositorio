@@ -14,7 +14,7 @@ public class Cliente {
 	private Date fechadealta;
 	private String telefono;
 	private String direccion;
-	private ArrayList<Pedido> Historial;
+	private ArrayList<Pedido> historial=new ArrayList <Pedido>();
 	
 	public Cliente(String nombre,String apellidos,Date fechadealta,String telefono,String direccion) {
 		this.setNombre(nombre);
@@ -22,7 +22,7 @@ public class Cliente {
 		this.setFechadeAlta(fechadealta);
 		this.setTelefono(telefono);
 		this.setDireccion(direccion);
-		this.setHistorial(Historial);
+		this.setHistorial(historial);
 	}
 	public Cliente(String nombre,String apellidos,String telefono,String direccion) {
 		this.setNombre(nombre);
@@ -30,7 +30,7 @@ public class Cliente {
 		this.setFechadeAlta(fechadealta);
 		this.setTelefono(telefono);
 		this.setDireccion(direccion);
-		this.setHistorial(Historial);
+		this.setHistorial(historial);
 	}
 	/*
 	 * El nombre del cliente
@@ -82,7 +82,7 @@ public class Cliente {
 	 * @param Historial
 	 */
 	public void setHistorial(ArrayList<Pedido> Historial) {
-		this.Historial=Historial;
+		this.historial=Historial;
 	}
 	public String GetNombre() {
 		
@@ -101,12 +101,15 @@ public class Cliente {
 	public String GetDireccion() {
 		return direccion;
 	}
-	public ArrayList<Pedido> GetHistorial(){
-		return Historial;
+	public void GetHistorial(){
+		for(Pedido p:historial) {
+			System.out.println(p.GetPasareladePago());
+		}
+
 	}
 	public void agregarpedido(Pedido pedido) {
-		if (Historial!=null) {
-			Historial.add(pedido);
+		if (historial!=null) {
+			historial.add(pedido);
 		}
 		
 		

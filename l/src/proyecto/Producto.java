@@ -17,14 +17,16 @@ public class Producto {
 		this.precio=Precio;
 	}
 	
-	
-	
-	
-	public static void add(ArrayList<Producto> producto) {
-		
+	public String GetNombre () {
+		return nombre;
 	}
+	public double GetPrecio () {
+		return precio;
+	}
+	
 	@Override
 	public String toString() {
+		return GetNombre()+","+GetPrecio()+"€";
 		
 	};
 }
