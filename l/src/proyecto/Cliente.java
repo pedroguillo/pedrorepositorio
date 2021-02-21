@@ -117,7 +117,7 @@ public class Cliente {
 	
 	@Override
 	public String toString() {
-		return GetNombre()+","+GetApellidos()+", "+GetDireccion()+","+GetFechadealta()+","+GetTelefono();
+		return "Nombre------>"+GetNombre()+"\n"+"Apellidos----->"+GetApellidos()+"\n"+"Dirección----> "+GetDireccion()+"\n"+"Fecha----->"+GetFechadealta()+"\n"+"Teléfono----->"+GetTelefono();
 	}
 	public static void main(String[] args) {
 		Date myDate=new Date();

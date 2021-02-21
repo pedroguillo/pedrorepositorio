@@ -106,8 +106,9 @@ public class Pedido {
 	for (Producto p:producto) {
 			lista = lista+p;
 	}
-	return GetCliente()+lista +"\n"+"CANT  " + "PRODUCTO   " +   "PRECIO  " +  "UD TOTAL"+ "\n"+
-								"====   "     + "=========" ;
+	return GetCliente() +"\n"+"CANT  " + "PRODUCTO   " +   "PRECIO UD " +  " TOTAL"+ "\n"+
+								"====  "+ "========   " +  "========= "+  " ====="+"\n"+
+	lista;
 	
 		
 
