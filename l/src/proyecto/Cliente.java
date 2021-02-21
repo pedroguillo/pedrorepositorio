@@ -6,24 +6,38 @@ import java.util.ArrayList;
 
 import java.util.Date;
 /*
- * Clase cliente 
+ * 
  */
 public class Cliente {
+	/*
+	 * Atributos
+	 */
 	private String nombre;
 	private String apellidos;
 	private Date fechadealta;
 	private String telefono;
 	private String direccion;
-	private ArrayList<Pedido> historial=new ArrayList <Pedido>();
+	private ArrayList<Pedido> historial;
 	
+	/**
+	 * Constructor
+	 * @param nombre
+	 * @param apellidos
+	 * @param fechadealta
+	 * @param telefono
+	 * @param direccion
+	 */
 	public Cliente(String nombre,String apellidos,Date fechadealta,String telefono,String direccion) {
 		this.setNombre(nombre);
 		this.setApellidos(apellidos);
 		this.setFechadeAlta(fechadealta);
 		this.setTelefono(telefono);
 		this.setDireccion(direccion);
-		this.setHistorial(historial);
+		this.setHistorial(new ArrayList <Pedido>());
 	}
+	/*
+	 * Sobrecarga
+	 */
 	public Cliente(String nombre,String apellidos,String telefono,String direccion) {
 		this.setNombre(nombre);
 		this.setApellidos(apellidos);
@@ -84,29 +98,56 @@ public class Cliente {
 	public void setHistorial(ArrayList<Pedido> Historial) {
 		this.historial=Historial;
 	}
+	/**
+	 * Devuelve el nombre
+	 * @return
+	 */
 	public String GetNombre() {
 		
 		return nombre;
 	}
+	/**
+	 * Devuelve apellidos
+	 * @return
+	 */
 	public String GetApellidos() {
 		return apellidos;
 	}
+	/**
+	 * Devuelve la fecha de alta
+	 * @return
+	 */
 	public Date GetFechadealta() {
 		return fechadealta;
 		
 	}
+	/**
+	 * Devuelve el telefono
+	 * @return
+	 */
 	public String GetTelefono() {
 		return telefono;
 	}
+	/**
+	 * Devuelve dirección
+	 * @return
+	 */
 	public String GetDireccion() {
 		return direccion;
 	}
+	/**
+	 * 
+	 */
 	public void GetHistorial(){
 		for(Pedido p:historial) {
 			System.out.println(p.GetPasareladePago());
 		}
 
 	}
+	/**
+	 * Agrega el pedido
+	 * @param pedido
+	 */
 	public void agregarpedido(Pedido pedido) {
 		if (historial!=null) {
 			historial.add(pedido);
@@ -119,16 +160,7 @@ public class Cliente {
 	public String toString() {
 		return "Nombre------>"+GetNombre()+"\n"+"Apellidos----->"+GetApellidos()+"\n"+"Dirección----> "+GetDireccion()+"\n"+"Fecha----->"+GetFechadealta()+"\n"+"Teléfono----->"+GetTelefono();
 	}
-	public static void main(String[] args) {
-		Date myDate=new Date();
-		Cliente c1=new Cliente("Pedro","Guilló Segura","693062746","Purisima 12");
-		System.out.println(c1);
-		
-	
-	}
+
 	
 }
 	
-//TODO Que muestre la fecha actual que el metodo agregar pedido se agregue al historial de un cliente, el array historial.
-
-

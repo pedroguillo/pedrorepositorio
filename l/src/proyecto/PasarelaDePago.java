@@ -2,23 +2,38 @@ package proyecto;
 
 import java.util.Date;
 import java.util.Scanner;
-
+/*
+ * Representa un pago
+ */
 public class PasarelaDePago {
 
 		private double importe;
 		private long codigopago;
-		
-		public PasarelaDePago (double importe,long codigopago) {
+		private static  double cantidadentrega;
+		/**
+		 * Constructor
+		 * @param importe
+		 * @param codigopago
+		 * @param cantidadentrega
+		 */
+		public PasarelaDePago (double importe,long codigopago,double cantidadentrega) {
 			 this.setImporte(importe);
 			 this.setCodigopago();
+			 this.cantidadentrega=cantidadentrega;
+			 
 		}
-		
+		/**
+		 * Sobrecarga
+		 * @param importe
+		 */
 		public PasarelaDePago (double importe) {
 			 this.setImporte(importe);
 			 this.setCodigopago();
 		}
-		/*
-		 * Importe que no puede contener mas de 2 decimales.
+		
+		/**
+		 * El importe que no puede contener mas de 2 decimales
+		 * @param importe
 		 */
 		public void setImporte(double importe) {
 			importe=Math.round(importe*100)/100d;
@@ -30,16 +45,27 @@ public class PasarelaDePago {
 		public void setCodigopago() {
 			this.codigopago=new Date().getTime();
 		}
+		/*
+		 * Devuelve el importe
+		 */
 		public double GetImporte() {
 			return importe;
 		}
+		/**
+		 * Devuelve el codigo de pago
+		 * @return
+		 */
+		
 		public long GetCodigopago() {
 			return codigopago;
 		}
-		public void efectivo(){
+		/**
+		 * Programa de cambio en efectivo
+		 * @param cantidadentrega
+		 */
+		public void efectivo(double cantidadentrega){
 			// Declaración de variables
 			double entregar = 0;
-			double cobrar = 0;
 			int seleccion = 0, cien = 0, cincuenta = 0, veinte = 0, diez = 0, cinco = 0, euro = 0;
 			double cambio = 0, cambiof = 0, cent = 0;
 
@@ -49,11 +75,8 @@ public class PasarelaDePago {
 
 			System.out.println("BIENVENIDO A LA PASARELA DE PAGOS");
 			System.out.println("*********************************");
-			System.out.println("Introduce el importe a cobrar:");
 
-			cobrar = entrada.nextFloat();
-
-			if (cobrar <= 0) {
+			if (importe <= 0) {
 				System.out.println("El importe debe ser mayor que cero.");
 			}
 			while (seleccion <= 0 || seleccion >= 4) {
@@ -75,15 +98,15 @@ public class PasarelaDePago {
 				System.out.println("Introduce la cantidad a entregar(ej 123,45):");
 				entregar = entrada.nextFloat();
 
-				if (cambio > (entregar - cobrar)) {
-					cobrar = cobrar - 0.01;
+				if (cambio > (entregar - importe)) {
+					importe = importe - 0.01;
 				}
-				if ((entregar > 1) && (cobrar < 1)) {
-					cobrar = cobrar - 0.01;
+				if ((entregar > 1) && (importe < 1)) {
+					importe = importe - 0.01;
 				}
-				cambio = entregar - cobrar;
+				cambio = entregar - importe;
 
-				if (entregar < cobrar) {
+				if (entregar < importe) {
 					System.out.println("La entrega es menor que el importe");
 					System.out.println("Introduce la cantidad a entregar(ej 123,45):");
 					entregar = entrada.nextFloat();
@@ -153,13 +176,25 @@ public class PasarelaDePago {
 			System.out.println("Billetes de 5€: " + cinco);
 			System.out.println("Monedas de 1€: " + euro);
 			System.out.println("Centimos: " + cent);
-			cambiof = entregar - cobrar;
+			cambiof = entregar - importe;
 			cambiof = cambiof * 100;
 			cambiof = Math.round(cambiof);
 			cambiof = cambiof / 100;
 			System.out.println("Total devolución: " +cambiof);
 			
 		}
+		
+		@Override
+		public String toString() {
+			return "Codigo de Pago---->"+GetCodigopago()+GetImporte();
+			
+		}
+		public static void main(String[] args) {
+			PasarelaDePago Codigopago=new PasarelaDePago(25);
+			Codigopago.efectivo(cantidadentrega);
+			System.out.println(Codigopago);
+		}
+		
 }
 
 
